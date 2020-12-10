@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script type="text/javascript">   
+			window.location = "/lincros/pages/secured/lincros/principal.jsf" + getURLParameters();
+		    function getURLParameters() {
+		        var token = window.location.search.substring(1);
+		        if (token == 'undefined' || token == '') {
+		            token = '';
+		        } else {        
+		           	token = '?' + token;
+		        }
+		        return token;
+		    }
+		</script>
+</head>
+</html>

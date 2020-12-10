@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:form id="form-menu-movimentacao" prependId="false">
+		<ul id="MenuVertical">
+			<li class="mainMenu"><h:outputLink id="lancamentos"
+					value="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/lancamentos/principal.jsf">
+					<h:outputText value="#{lbl['menu_lincros.lancamentos']}" />
+				</h:outputLink>
+			</li>
+			<li class="mainMenu"><h:outputLink id="itens"
+					value="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/itens/principal.jsf">
+					<h:outputText value="#{lbl['menu_lincros.itens']}" />
+				</h:outputLink>
+			</li>
+			<li class="mainMenu"><h:outputLink id="intersecao"
+					value="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/intersecao.jsf">
+					<h:outputText value="Intersecao" />
+				</h:outputLink>
+			</li>
+		</ul>
+	</h:form>
+</html>

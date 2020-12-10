@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/main.xhtml">
+
+	<ui:define name="localizacao">
+		<ul class="ul-localizacao">
+			<li class="titulo"><h:outputText value="#{lbl.voce_esta }" /></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/principal.jsf">
+					<h:outputText value="#{lbl.principal}" />
+			</a></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/principal.jsf">
+					<h:outputText value="#{lbl['menu_principal.lincros']}" />
+			</a></li>
+			<li><h:outputText value="#{lbl['menu_lincros.itens']}" /></li>
+			<li id="li-localizacao-atual"><h:outputText
+					value="#{lbl['menu_lincros.manutencao']}" /></li>
+		</ul>
+	</ui:define>
+
+	<ui:define name="form-titulo">
+		<h:outputText value="#{lbl['menu_lincros.item.manutencao']}" />
+	</ui:define>
+
+	<ui:define name="menu-vertical">
+		<ui:include src="/pages/secured/lincros/itens/menu.xhtml" />
+	</ui:define>
+
+
+	<ui:define name="corpo">
+		<h:panelGroup styleClass="div-tit-erro width-100 msg-erro"
+			layout="block" rendered="#{itemController.aviso != ''}">
+			<p:outputLabel value="#{itemController.aviso}" />
+		</h:panelGroup>
+
+		<h:form>
+			<p:commandButton value="Novo" action="#{itemController.criar()}"
+				update="@all" render="@all"/>
+				
+			<p:commandButton update="@all" value="Consultar" rendered="#{itemController.state eq 0}"
+				action="#{itemController.consultar()}"/>
+				
+			<p:commandButton update="@all" value="Voltar" rendered="#{itemController.state eq 1}"
+				action="#{itemController.voltar}" />
+				
+		</h:form>
+
+		<h:form id="form-editar" prependId="false"
+			rendered="#{itemController.state eq 1}">
+			<h:panelGroup layout="block">
+
+				<h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+					<p:outputLabel for="id" value="ID" />
+					<h:outputText id="id" value="#{itemController.item.id}" />
+					<p:message for="id" />
+
+					<p:outputLabel for="descricao" value="Descrição" />
+					<p:inputText id="descricao"
+						value="#{itemController.item.descricao}" />
+					<p:message for="descricao" />
+
+					<p:outputLabel for="valor" value="Valor" />
+					<p:inputText id="valor" value="#{itemController.item.valor}" />
+					<p:message for="valor" />
+
+
+					<p:commandButton update="@all" value="Salvar"
+						action="#{itemController.salvar}">
+					</p:commandButton>
+
+				</h:panelGrid>
+
+				<h:panelGroup layout="block" styleClass="div-obigatorio">
+					<h:outputText value="#{lbl['tela.campos_obrigatorios']}" />
+				</h:panelGroup>
+
+				<br />
+
+			</h:panelGroup>
+		</h:form>
+
+		<h:form id="form-consulta" prependId="false"
+			rendered="#{itemController.state eq 0}">
+
+			<h:panelGroup id="pg-principal" layout="block" style="width: 770px;">
+
+				<h:panelGroup id="pg-grid-movimentos" layout="block">
+
+					<p:dataTable id="itemList" var="item"
+						value="#{itemController.itens}">
+						<p:column headerText="ID">
+							<h:outputText value="#{item.id}" style="float: right"/>
+						</p:column>
+
+						<p:column headerText="Descrição">
+							<h:outputText id="descricao" value="#{item.descricao}" />
+						</p:column>
+
+						<p:column headerText="Valor">
+							<h:outputText value="#{item.valor}" style="float: right">
+								<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+									type="currency" />
+							</h:outputText>
+						</p:column>
+
+						<p:column>
+							<p:commandButton update="@all" value="Editar"
+								icon="ui-icon-pencil" action="#{itemController.alterar(item)}"
+								styleClass="ui-priority-primary" style="float: right">
+							</p:commandButton>
+						</p:column>
+
+
+						<p:column>
+							<p:commandButton update="@all" value="Excluir"
+								icon="ui-icon-closethick"
+								action="#{itemController.delete(item)}"
+								styleClass="ui-priority-primary" style="float: right">
+							</p:commandButton>
+						</p:column>
+
+
+					</p:dataTable>
+
+				</h:panelGroup>
+
+			</h:panelGroup>
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

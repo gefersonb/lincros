@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/main.xhtml">
+
+	<ui:define name="localizacao">
+		<ul class="ul-localizacao">
+			<li class="titulo"><h:outputText value="#{lbl.voce_esta }" /></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/principal.jsf">
+					<h:outputText value="#{lbl.principal}" />
+			</a></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/principal.jsf">
+					<h:outputText value="#{lbl['menu_principal.lincros']}" />
+			</a></li>
+			<li id="li-localizacao-atual"><h:outputText
+					value="Intersecao" /></li>
+		</ul>
+	</ui:define>
+
+	<ui:define name="form-titulo">
+		<h:outputText value="Intersecao" />
+	</ui:define>
+
+	<ui:define name="menu-vertical">
+		<ui:include
+			src="/pages/secured/lincros/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:panelGroup styleClass="div-tit-erro width-100 msg-erro" layout="block" rendered="#{intersecaoController.aviso != ''}">
+			<p:outputLabel value="#{intersecaoController.aviso}"  />
+		</h:panelGroup>
+	
+		<h:form id="form-editar" prependId="false" >
+				<h:panelGroup layout="block">
+					
+					<h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+					        <p:outputLabel value="Faixa 1" />
+					        <p:outputLabel value="" />
+					        
+					        <br/>
+					        <p:outputLabel for="a" value="A =" />
+					        <p:inputText id="a" value="#{intersecaoController.a}" />
+					        <p:message for="a" />
+					 
+					        <p:outputLabel for="b" value="B =" />
+					        <p:inputText id="b" value="#{intersecaoController.b}" />
+					        <p:message for="b" />
+					 
+					        <p:outputLabel value="Faixa 2" />
+					        <p:outputLabel value="" />
+					        
+					        <br/>
+
+					        <p:outputLabel for="c" value="C =" />
+					        <p:inputText id="c" value="#{intersecaoController.c}" />
+					        <p:message for="c" />
+					 
+					        <p:outputLabel for="d" value="D =" />
+					        <p:inputText id="d" value="#{intersecaoController.d}" />
+					        <p:message for="d" />
+					 
+					 					 
+					        <p:commandButton update="@all" value="Verificar" action="#{intersecaoController.verificar}">
+					        </p:commandButton>
+					        
+					    </h:panelGrid>
+					    
+						<h:panelGroup layout="block" styleClass="div-obigatorio">
+							<h:outputText value="#{lbl['tela.campos_obrigatorios']}" />
+						</h:panelGroup>
+		
+						<br />
+						
+						<h:panelGroup styleClass="div-txt-sucesso width-100 msg-sucesso" layout="block" rendered="#{intersecaoController.resultado != ''}">
+							<p:outputLabel value="#{intersecaoController.resultado}"  />
+						</h:panelGroup>
+				
+				</h:panelGroup>
+		</h:form>
+	
+
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

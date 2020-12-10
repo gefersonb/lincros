@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/main.xhtml">
+	
+	<ui:define name="localizacao">
+		<ul class="ul-localizacao">
+			<li class="titulo">
+				<h:outputText value="#{lbl.voce_esta }" />
+			</li>
+			<li>
+				<a href="#{facesContext.externalContext.request.contextPath}/pages/secured/principal.jsf">
+					<h:outputText value="#{lbl.principal}" />
+				</a>
+			</li>
+			<li id="li-localizacao-atual">
+				<h:outputText value="#{lbl['menu_principal.lincros']}" />
+			</li>
+		</ul>
+	</ui:define>	
+
+	<ui:define name="menu-vertical">
+		<ui:include src="/pages/secured/lincros/menu.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>

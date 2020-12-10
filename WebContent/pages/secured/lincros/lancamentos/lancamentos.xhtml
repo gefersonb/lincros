@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/main.xhtml">
+
+	<ui:define name="localizacao">
+		<ul class="ul-localizacao">
+			<li class="titulo"><h:outputText value="#{lbl.voce_esta }" /></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/principal.jsf">
+					<h:outputText value="#{lbl.principal}" />
+			</a></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/principal.jsf">
+					<h:outputText value="#{lbl['menu_principal.lincros']}" />
+			</a></li>
+			<li><h:outputText value="#{lbl['menu_lincros.lancamentos']}" /></li>
+			<li id="li-localizacao-atual"><h:outputText
+					value="#{lbl['menu_lincros.manutencao']}" /></li>
+		</ul>
+	</ui:define>
+
+	<ui:define name="form-titulo">
+		<h:outputText value="#{lbl['menu_lincros.lancamento.manutencao']}" />
+	</ui:define>
+
+	<ui:define name="menu-vertical">
+		<ui:include src="/pages/secured/lincros/lancamentos/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:panelGroup styleClass="div-tit-erro width-100 msg-erro"
+			layout="block" rendered="#{lancamentoController.aviso != ''}">
+			<p:outputLabel value="#{lancamentoController.aviso}" />
+		</h:panelGroup>
+		
+		<h:form id="form-novo">
+			<p:commandButton value="Novo"
+				action="#{lancamentoController.criar()}" update="@all"
+				render="@all"/>
+			<p:commandButton update="@all" value="Consultar" rendered="#{lancamentoController.state eq 0}"
+				action="#{lancamentoController.consultar()}"/>
+			
+			<p:commandButton update="@all" value="Voltar" rendered="#{lancamentoController.state eq 1 or lancamentoController.state eq 3}"
+				action="#{lancamentoController.voltar}" />
+		</h:form>
+
+		<h:form id="form-editar" prependId="false"
+			rendered="#{lancamentoController.state eq 1 or lancamentoController.state eq 3}">
+			<h:panelGroup layout="block">
+
+				<h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+					<p:outputLabel for="id" value="ID" />
+					<p:inputText id="id" value="#{lancamentoController.lcto.id}" />
+					<p:message for="id" />
+
+					<p:outputLabel for="dt_inicial" value="Data Inicial" />
+					<p:calendar id="dt_inicial"
+						value="#{lancamentoController.lcto.dtInicial}" showOn="button" />
+					<p:message for="dt_inicial" />
+
+					<p:outputLabel for="dt_final" value="Data Final" />
+					<p:calendar id="dt_final"
+						value="#{lancamentoController.lcto.dtFinal}" showOn="button" />
+					<p:message for="dt_final" />
+
+					<p:outputLabel for="observacao" value="Observação" />
+					<p:inputText id="observacao"
+						value="#{lancamentoController.lcto.observacao}" />
+					<p:message for="observacao" />
+
+					<p:outputLabel for="vl_medio" value="Valor Médio" />
+					<h:outputText id="vl_medio"
+						value="#{lancamentoController.lcto.valorMedio}" >
+						<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+							type="currency" />
+					</h:outputText>
+					<p:message for="vl_medio" />
+					
+					
+					<p:outputLabel for="vl_total" value="Valor Total" />
+					<h:outputText id="vl_total"
+						value="#{lancamentoController.lcto.valorTotal}" >
+						<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+							type="currency" />
+					</h:outputText>
+					<p:message for="vl_total" />
+
+					<p:commandButton update="@all" value="Salvar"
+						action="#{lancamentoController.salvar}">
+					</p:commandButton>
+
+				</h:panelGrid>
+
+				<h:panelGroup layout="block" styleClass="div-obigatorio">
+					<h:outputText value="#{lbl['tela.campos_obrigatorios']}" />
+				</h:panelGroup>
+
+				<br />
+
+				<h:panelGroup>
+
+					<h:panelGroup id="pg-grid-itens" layout="block"
+						rendered="#{lancamentoController.state eq 1}">
+
+						<p:commandButton update="@all" value="Incluir itens"
+							action="#{lancamentoController.incluirItens(lancamentoController.idLcto)}" />
+
+						<p:dataTable id="itemList" var="item"
+							value="#{lancamentoController.itens}">
+							<p:column headerText="Id">
+								<h:outputText value="#{item.id}" />
+							</p:column>
+
+							<p:column headerText="Descricao">
+								<p:inputText id="descricao" value="#{item.descricao}" />
+							</p:column>
+
+							<p:column headerText="Valor">
+								<p:inputText id="valor" value="#{item.valor}" />
+							</p:column>
+
+							<p:column>
+								<p:commandButton id="delete-item" update="@form" value="Excluir"
+									icon="ui-icon-closethick"
+									action="#{lancamentoController.deleteItem(lancamentoController.idLcto, item)}"
+									styleClass="ui-priority-primary">
+								</p:commandButton>
+							</p:column>
+
+
+						</p:dataTable>
+
+					</h:panelGroup>
+					<h:panelGroup id="pg-grid-itens2" layout="block"
+						rendered="#{lancamentoController.state eq 3}">
+
+						<p:commandButton update="@all" value="Confirmar"
+							action="#{lancamentoController.confirmarItens(lancamentoController.idLcto)}">
+						</p:commandButton>
+
+						<h:panelGroup id="pg-grid-incluir-itens" layout="block">
+
+							<p:dataTable id="incluirItemList" var="item"
+								value="#{lancamentoController.todosItens}">
+
+								<p:column headerText="">
+									<p:selectBooleanCheckbox value="#{item.check}" />
+								</p:column>
+
+								<p:column headerText="Id">
+									<h:outputText value="#{item.id}" />
+								</p:column>
+
+								<p:column headerText="Descricao">
+									<p:inputText id="descricao" value="#{item.descricao}" />
+								</p:column>
+
+								<p:column headerText="Valor">
+									<p:inputText id="valor" value="#{item.valor}" />
+								</p:column>
+
+							</p:dataTable>
+
+						</h:panelGroup>
+
+					</h:panelGroup>
+				</h:panelGroup>
+
+			</h:panelGroup>
+		</h:form>
+
+
+		<h:form id="form-itens" prependId="false"
+			rendered="#{lancamentoController.state eq 2}">
+
+			<p:commandButton update="@all" value="Lançamento"
+				action="#{lancamentoController.mostrarLancamento(lancamentoController.idLcto)}">
+			</p:commandButton>
+
+		</h:form>
+
+		<h:form id="form-consulta" prependId="false"
+			rendered="#{lancamentoController.state eq 0}">
+
+			<h:panelGroup id="pg-principal" layout="block" style="width: 970px;">
+
+				<h:panelGroup id="pg-grid-movimentos" layout="block">
+
+					<p:dataTable id="lancamentoList" var="lcto"
+						value="#{lancamentoController.lancamentos}">
+						<p:column headerText="OID">
+							<h:outputText value="#{lcto.id}" style="float: right" />
+						</p:column>
+
+						<p:column headerText="Data Inicial" style="width:120px;">
+							<h:outputText value="#{lcto.dtInicial}" style="float: right">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Data Final" style="width:120px;">
+							<h:outputText value="#{lcto.dtFinal}" style="float: right">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Observação">
+							<h:outputText value="#{lcto.observacao}" />
+						</p:column>
+
+						<p:column headerText="Valor Total">
+							<h:outputText value="#{lcto.valorTotal}" style="float: right">
+								<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+									type="currency" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Valor Médio">
+							<h:outputText value="#{lcto.valorMedio}" style="float: right">
+								<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+									type="currency" />
+							</h:outputText>
+						</p:column>
+
+						<p:column>
+							<p:commandButton update="@all" value="Editar"
+								icon="ui-icon-pencil"
+								action="#{lancamentoController.alterar(lcto)}"
+								styleClass="ui-priority-primary" style="float: right">
+							</p:commandButton>
+						</p:column>
+
+						<p:column>
+							<p:commandButton update="@all" value="Excluir"
+								icon="ui-icon-closethick"
+								action="#{lancamentoController.delete(lcto)}"
+								styleClass="ui-priority-primary" style="float: right">
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+
+				</h:panelGroup>
+
+			</h:panelGroup>
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

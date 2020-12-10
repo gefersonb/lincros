@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<f:view encoding="UTF-8" locale="pt_BR">
+      
+	<h:head>
+		
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<title><h:outputText value="#{lbl.titulo}"/></title>
+		
+		<!-- Arquivo que contém CSS do protótipo -->
+   		<h:outputStylesheet name="design/css/estilo.css" />
+		<link  rel="shortcut icon" href="#{facesContext.externalContext.request.contextPath}/resources/design/images/puzzle.png" />
+		<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.request.contextPath}/resources/design/css/base/jquery.ui.all.css" />
+		
+		<!--  Componente jQueryUI  -->
+		<h:outputScript name="design/js/jquery.min.1.9.0.js" />
+		<h:outputScript name="design/js/jquery-ui-1.10.0.custom.min.js" />
+
+		<!--  Componente jQuery para mascara de campos  -->
+		<h:outputScript name="design/js/mask.jquery.js" />
+
+		<!--  Script de ajuste, este script foi criado pelo comunidade Jquery para Auxiliar na migração do jQuery 1.9 ou superior  -->
+		<!-- Como jQuery possui muitos componentes agregados e os navagadores receberam várias atualizações nos últimos meses 
+			 este script ajuda a manter a funcionalidade de CrossBrowser do jQuery -->
+		<h:outputScript name="design/js/jquery.migrate-1.0.0.js" />
+		
+		<!--  Componente jQuery para bordar arredondadas -->
+		<h:outputScript name="design/js/jquery.corner.js" />
+		
+		<!--  Componente jQuery para grids -->
+		<h:outputScript name="design/js/jquery.dataTables.js" />
+		
+		<!-- Arquivo com functions do protótipo e contrutor para aplicar regras e componentes aos elementos das paginas. -->
+		<!-- Todas functions que podem ser alteradas e ou criadas devem ser feitas neste arquivo. -->
+		<!-- Lembrando que este arquivo foi construido para esta aplicação e seu conteúdo atual. Caso forem adicionados 
+			 novos elementos nas páginas devem ser levados em considereção os IDs dos mesmo para evitar duplicidade 
+			 evitando assim que o javascript pare de funcionar.-->
+		<h:outputScript name="design/js/init.js"/>			
+		
+	</h:head>
+	
+	<h:body>
+	
+		<div class='div-tudo'>
+		
+			<!-- TOPO INICIO -->
+			<div class="div-topo">
+				<div class="div-top-conteudo div-largura-total">
+					<h2><h:outputText value="#{lbl.titulo}"/></h2>
+				</div>
+				<div class="div-top-conteudo div-largura-total" >
+					&nbsp;
+				</div>
+			</div>
+			<!-- TOPO FIM -->
+			
+			<!-- MENU HORIZONTAL INICIO -->
+			<div class="div-menu-horizontal">
+				<div class="div-menu-horizontal-conteudo div-largura-total">
+					
+				</div>
+			</div>
+			<!-- MENU HORIZONTAL FIM -->
+
+			<!-- LOCALIZAÇÃO INICIO-->
+			<div class="div-localizacao">
+				<div class="div-localizacao-conteudo div-largura-total">
+					<ui:insert name="localizacao" />
+				</div>
+			</div>
+			
+			<!-- LOCALIZAÇÃO FIM -->
+			<div class="div-top-conteudo div-largura-total" >
+				&nbsp;
+			</div>
+			
+			<!-- MEIO INICIO -->
+			<div class="div-meio div-largura-total">
+				<div class="div-menu-vertical">
+					<div class="div-menu-vertical-conteudo">
+						<ui:insert name="menu-vertical" />
+					</div>
+				</div>
+				<div class="div-principal">
+					<div class="div-principal-conteudo">
+						<h3><ui:insert name="form-titulo" /></h3>
+						<h:messages errorClass="width-93 msg-erro" styleClass="div-tit-erro" id="erroGeral" layout="html" showDetail="false" />	
+						<span id="conteudoForm"> <ui:insert name="corpo" /></span>
+					</div>
+				</div>
+			</div>
+			<!-- MEIO FIM -->
+			
+			<div class="div-top-conteudo div-largura-total" >
+				&nbsp;
+			</div>
+			
+		</div>
+		
+		<div class="div-rodape">
+			<div class="div-rodape-conteudo div-largura-total">
+				<ui:include src="footer.xhtml" />
+			</div>
+		</div>
+
+	</h:body>
+
+</f:view>
+
+</html>

@@ -1,0 +1,311 @@
+.btn-sucesso {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -11px -3px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-tabela {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -47px -6px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-usuario {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -82px -5px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-grafico-barras {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -120px -2px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-duplicar {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -155px -7px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-pdf {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -190px -4px;
+	width: 27px;
+	height: 27px;
+}
+.btn-editar-mensagem {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -225px -5px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-editar-comentario {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -256px -1px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-incluir {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -11px -37px;
+	width: 27px;
+	height: 27px;
+	border:none;
+}
+.btn-imprimir {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -47px -33px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-adicionar-usuario {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -82px -41px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-grafico-linha {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -121px -39px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-atualizar {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -151px -40px;
+	width: 27px;
+	height: 27px;
+	border:none;
+}
+
+.btn-doc-enviado {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -151px -40px;
+	width: 27px;
+	height: 27px;
+	border:none;
+}
+
+.btn-detalhe {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -190px -36px;
+	border:none;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-nova-mensagem {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -225px -40px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-relogio {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -258px -39px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-excluir {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -11px -69px;
+	width: 27px;
+	height: 27px;
+	border:none;
+}
+
+.btn-editar {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -46px -68px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-excluir-usuario {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -82px -70px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-grafico-pizza {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -118px -68px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-anexar {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -153px -72px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-desbloqueado {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -190px -69px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-salvar {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -224px -71px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-editar2 {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -12px -103px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-word {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -47px -98px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-mensagem-aberta {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -82px -100px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-organograma {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -118px -101px;
+	width: 27px;
+	height: 27px;
+}
+.btn-erro {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -152px -103px;
+	width: 27px;
+	height: 27px;
+}
+.btn-bloqueado {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -190px -102px;
+	width: 27px;
+	height: 27px;
+}
+.btn-imagem {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -225px -110px;
+	width: 27px;
+	height: 27px;
+}
+.btn-novo {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -12px -134px;
+	width: 27px;
+	height: 27px;
+}
+.btn-excel {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -46px -131px;
+	width: 27px;
+	height: 27px;
+}
+.btn-encaminhar-mensagem {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -82px -133px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-atencao {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -118px -133px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-comentario {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -149px -137px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-calendario {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -188px -135px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-informacoes {
+	cursor: pointer;
+	background: url("#{resource['design/images/icones-agrupados.png']}") no-repeat -225px -135px;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-curtir {
+	cursor: pointer;
+	background: url("#{resource['design/images/curtir_ideia.png']}") no-repeat;
+	width: 78px;
+	height: 36px;
+}
+
+.btn-curtir-ativo{
+	cursor: pointer;
+	background: url("#{resource['design/images/curtirAtivo.png']}") no-repeat;
+	width: 36px;
+	height: 32px;
+}
+
+.btn-curtir-inativo{
+	cursor: pointer;
+	background: url("#{resource['design/images/curtirInativo.png']}") no-repeat;
+	width: 36px;
+	height: 32px;
+}
+
+.btn-baixar{
+	cursor: pointer;
+	background: url("#{resource['design/images/baixar.png']}") no-repeat;
+	width: 22px;
+	height: 22px;
+}
+
+.btn-ativo{
+	cursor: pointer;
+	background: url("#{resource['design/images/on.png']}") no-repeat;
+	width: 29px;
+	height: 27px;
+}
+
+.btn-inativo{
+	cursor: pointer;
+	background: url("#{resource['design/images/off.png']}") no-repeat;
+	width: 27px;
+	height: 27px;
+}
+
+.btn-clear{
+	cursor: default;
+	background: url("#{resource['design/images/clear.png']}") no-repeat;
+	width: 27px;
+	height: 27px;
+}

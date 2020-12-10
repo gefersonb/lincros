@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view encoding="UTF-8" locale="pt_BR">
+<h:head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, post-check=0, pre-check=0" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<title>Login</title>
+	<h:outputStylesheet name="design/css/estilo_login.css" />
+	<link rel="shortcut icon" href="#{facesContext.externalContext.request.contextPath}/resources/design/images/puzzle.png" />
+	<h:outputScript name="design/js/jquery.min.1.9.0.js"/>
+	<h:outputScript name="design/js/jquery.jcryption.min.js"/>
+	<h:outputScript name="design/js/engine.js"/>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var isFirefox = typeof InstallTrigger !== 'undefined';
+			if(isFirefox === false){
+				$('.nomelogo').css('font-size', '10px');
+				$('.nomelogo').css('padding-top', '8px');
+			}
+		});
+	</script>
+</h:head>
+<h:body>
+	<div class='div-tudo'>
+	
+		<!-- TOPO INICIO -->
+		<div class="div-topo">
+			<div id="cabecalho" class="largura">
+				<h1 class="logo" title="#{applicationController.logoTitle}"> <h:outputText value="#{applicationController.logoTitle}" /> </h1>
+				<h:panelGroup layout="block" styleClass="nomelogo">
+					Prova Técnica Lincros<br/>
+					Analista Responsável: Geferson Buzzello<br/>
+					<br/>
+				</h:panelGroup>
+				<h2>
+					SISTEMA &nbsp;<span id="sistema"><h:outputText value="#{lbl.sigla_sistema}"/> </span>
+				</h2>
+			</div>
+		</div>
+		
+		<!-- TOPO FIM -->
+		<div class="div-max">
+		
+			<div id="autenticando">
+				<p>Autenticando...</p>
+			</div>
+			
+			<div class="div-centro">
+                <h3>Autenticação</h3>
+                <p id="mensagem">  </p>
+                <fieldset>
+                    <label for="login">Login:</label>
+                    <input type="text" name="login" id="login" maxlength="40" value="" onkeyup="verificaEnter(event);"/>
+
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha" maxlength="20" value="" onkeyup="verificaEnter(event);"/>
+                    <span class="tip"></span>
+                </fieldset>
+                <a href="#" class="botaol" title="Limpar" id="limpar" onclick="limpar();"><span>Limpar</span></a>
+                <a href="#" class="botao" title="Entrar" id="entrar"><span>Entrar>>></span></a>
+                <input id="watch" type="hidden" name="back" value="" />
+            </div>
+
+			<h:form id="form-login" prependId="false">
+				<input id="contextPath" type="hidden" value="#{facesContext.externalContext.request.contextPath}" />
+                <h:inputHidden id="login-crypto" value="#{loginController.matricula}" />
+                <h:inputHidden id="senha-crypto" value="#{loginController.senha}" />
+				<h:commandButton id="logon" action="#{loginController.logon()}" style="display: none"/>
+			</h:form>
+			
+		</div>
+
+	</div>
+	
+	<!-- RODAPÉ -->
+	<div class="div-rodape">
+		<div class="div-rodape-conteudo largura">
+			<p><h:outputText value="#{applicationController.logoTitle}" /></p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#login').focus();
+			var errorMessage = "#{loginController.mensagemErro}";
+			if(errorMessage != ""){
+				$("#mensagem").html(errorMessage);
+			}else{
+				$("#mensagem").html("");
+			}
+		});
+	</script>		
+
+</h:body>
+</f:view>
+</html>

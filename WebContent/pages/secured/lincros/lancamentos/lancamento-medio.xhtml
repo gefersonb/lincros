@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/main.xhtml">
+
+	<ui:define name="localizacao">
+		<ul class="ul-localizacao">
+			<li class="titulo"><h:outputText value="#{lbl.voce_esta }" /></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/principal.jsf">
+					<h:outputText value="#{lbl.principal}" />
+			</a></li>
+			<li><a
+				href="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/principal.jsf">
+					<h:outputText value="#{lbl['menu_principal.lincros']}" />
+			</a></li>
+			<li><h:outputText
+					value="#{lbl['menu_lincros.lancamentos']}" /></li>
+			<li id="li-localizacao-atual"><h:outputText
+					value="#{lbl['menu_lincros.manutencao']}" /></li>
+		</ul>
+	</ui:define>
+
+	<ui:define name="form-titulo">
+		<h:outputText value="#{lbl['menu_lincros.lancamento.medio']}" />
+	</ui:define>
+
+	<ui:define name="menu-vertical">
+		<ui:include
+			src="/pages/secured/lincros/lancamentos/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:form id="form-consulta" prependId="false" rendered = "#{lancamentoController.state eq 0}">
+
+			<h:panelGroup id="pg-principal" layout="block" style="width: 770px;">
+
+		        <p:commandButton update="@form" value="Valor medio" action="#{lancamentoController.consultarLctoMedio()}">
+		        </p:commandButton>
+		        
+		        <p:commandButton update="@form" value="Maiores valores" action="#{lancamentoController.consultarMaiores()}">
+		        </p:commandButton>
+		        
+				<h:panelGroup id="pg-grid-movimentos" layout="block">
+					
+				   <p:dataTable id="lancamentoList" var="lcto" value="#{lancamentoController.lancamentoMedio.lctos}">
+				      <p:column headerText="Id">
+				         <h:outputText value="#{lcto.lancamento.id}"/>
+				      </p:column>
+				 
+				      <p:column headerText="Observacao">
+				         <h:outputText value="#{lcto.lancamento.observacao}"/>
+				      </p:column>
+				        
+				      <p:column headerText="Valor total">
+				         <h:outputText value="#{lcto.total}"/>
+				      </p:column>
+				      
+				      <p:column headerText="Valor medio">
+				         <h:outputText value="#{lcto.media}"/>
+				      </p:column>
+				      
+				     </p:dataTable>
+					
+				</h:panelGroup>
+				
+				<h:outputText value="#{lancamentoController.lancamentoMedio.total}" />
+				
+			</h:panelGroup>
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

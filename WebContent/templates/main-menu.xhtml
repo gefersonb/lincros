@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+      <style>
+		.selectEmitente {
+				text-decoration: none; 
+				font-weight:0; 
+				border: 1px solid #aaa; 
+				width: 230px; 
+				font-family: Arial; 
+				font-size: 11px;
+				background-color:#eee;
+		}
+	</style>
+
+<h:form id="form-change-emitente" prependId="false">
+      
+	<ul>
+		
+		<li class="sem-divisor">
+			<a href="#{facesContext.externalContext.request.contextPath}/pages/secured/principal.jsf">
+				<h:outputText value="#{lbl.inicio}" />
+			</a>
+		</li>
+		
+		<li class="com-divisor">
+			<a href="#{facesContext.externalContext.request.contextPath}/pages/secured/lincros/principal.jsf">
+				<h:outputText value="#{lbl['menu_principal.lincros']}" />
+			</a>
+		</li>
+			
+	</ul>
+
+</h:form>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::#pages#secured#principal.xhtml"
+    NAME="output" PATH="/pages/secured/principal.xhtml"
+    TARGET="rules:#pages#secured#principal.xhtml" TITLE="principal" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:1" PATH="*" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:1" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="error::#pages#public#error#error.xhtml"
+    NAME="output" PATH="/pages/public/error/error.xhtml"
+    TARGET="rules:#pages#public#error#error.xhtml" TITLE="error" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:2" PATH="*" SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:2" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="view-expired::#pages#public#error#view-expired.xhtml"
+    NAME="output" PATH="/pages/public/error/view-expired.xhtml"
+    TARGET="rules:#pages#public#error#view-expired.xhtml"
+    TITLE="view-expired" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:3" PATH="*" SHAPE="32,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:3" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="access-denied::#pages#public#error#access-denied.xhtml"
+    NAME="output" PATH="/pages/public/error/access-denied.xhtml"
+    TARGET="rules:#pages#public#error#access-denied.xhtml"
+    TITLE="access-denied" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#public#error#view-expired.xhtml"
+  PATH="/pages/public/error/view-expired.xhtml" SHAPE="240,289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#error#error.xhtml"
+  PATH="/pages/public/error/error.xhtml" SHAPE="240,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#error#access-denied.xhtml"
+  PATH="/pages/public/error/access-denied.xhtml" SHAPE="240,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#secured#principal.xhtml"
+  PATH="/pages/secured/principal.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
