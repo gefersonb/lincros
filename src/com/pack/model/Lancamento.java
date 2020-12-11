@@ -31,7 +31,7 @@ import com.pack.util.DateUtils;
 		@NamedQuery(name = Lancamento.FIND_AVG, query = "SELECT l FROM Lancamento l"),
 		@NamedQuery(name = Lancamento.GET_BY_ID, query = "SELECT l FROM Lancamento l WHERE l.id = :id"),
 		@NamedQuery(name = Lancamento.GET_RESUMIDO, query = "SELECT new com.pack.view.LancamentoResumido(l, sum(i.valor), avg(i.valor), count(i.id)) FROM Item i JOIN i.lancamentos l GROUP BY l.id"),
-		@NamedQuery(name = Lancamento.GET_MAIORES, query = "SELECT new com.pack.view.LancamentoResumido(l, sum(i.valor), avg(i.valor), count(i.id)) FROM Item i JOIN i.lancamentos l WHERE i.descricao LIKE 'A%' GROUP BY l.id ORDER BY SUM(i.valor) DESC"),
+		@NamedQuery(name = Lancamento.GET_MAIORES, query = "SELECT new com.pack.view.LancamentoResumido(l, sum(i.valor), avg(i.valor), count(i.id)) FROM Item i JOIN i.lancamentos l WHERE UPPER(i.descricao) LIKE 'A%' GROUP BY l.id ORDER BY SUM(i.valor) DESC"),
 
 })
 
