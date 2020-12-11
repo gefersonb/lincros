@@ -37,15 +37,16 @@
 			layout="block" rendered="#{lancamentoController.aviso != ''}">
 			<p:outputLabel value="#{lancamentoController.aviso}" />
 		</h:panelGroup>
-		
+
 		<h:form id="form-novo">
 			<p:commandButton value="Novo"
-				action="#{lancamentoController.criar()}" update="@all"
-				render="@all"/>
-			<p:commandButton update="@all" value="Consultar" rendered="#{lancamentoController.state eq 0}"
-				action="#{lancamentoController.consultar()}"/>
-			
-			<p:commandButton update="@all" value="Voltar" rendered="#{lancamentoController.state eq 1 or lancamentoController.state eq 3}"
+				action="#{lancamentoController.criar()}" update="@all" render="@all" />
+			<p:commandButton update="@all" value="Consultar"
+				rendered="#{lancamentoController.state eq 0}"
+				action="#{lancamentoController.consultar()}" />
+
+			<p:commandButton update="@all" value="Voltar"
+				rendered="#{lancamentoController.state eq 1 or lancamentoController.state eq 3}"
 				action="#{lancamentoController.voltar}" />
 		</h:form>
 
@@ -75,16 +76,16 @@
 
 					<p:outputLabel for="vl_medio" value="Valor Médio" />
 					<h:outputText id="vl_medio"
-						value="#{lancamentoController.lcto.valorMedio}" >
+						value="#{lancamentoController.lcto.valorMedio}">
 						<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
 							type="currency" />
 					</h:outputText>
 					<p:message for="vl_medio" />
-					
-					
+
+
 					<p:outputLabel for="vl_total" value="Valor Total" />
 					<h:outputText id="vl_total"
-						value="#{lancamentoController.lcto.valorTotal}" >
+						value="#{lancamentoController.lcto.valorTotal}">
 						<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
 							type="currency" />
 					</h:outputText>
@@ -112,16 +113,20 @@
 
 						<p:dataTable id="itemList" var="item"
 							value="#{lancamentoController.itens}">
-							<p:column headerText="Id">
-								<h:outputText value="#{item.id}" />
+							<p:column headerText="Item">
+								<h:outputText value="#{item.id}" style="float: right"/>
 							</p:column>
 
 							<p:column headerText="Descricao">
-								<p:inputText id="descricao" value="#{item.descricao}" />
+								<h:outputText id="descricao" value="#{item.descricao}" />
 							</p:column>
 
 							<p:column headerText="Valor">
-								<p:inputText id="valor" value="#{item.valor}" />
+								<h:outputText id="valor" value="#{item.valor}"
+									style="float: right">
+									<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+										type="currency" />
+								</h:outputText>
 							</p:column>
 
 							<p:column>
@@ -152,16 +157,20 @@
 									<p:selectBooleanCheckbox value="#{item.check}" />
 								</p:column>
 
-								<p:column headerText="Id">
-									<h:outputText value="#{item.id}" />
+								<p:column headerText="Item">
+									<h:outputText value="#{item.id}" style="float: right"/>
 								</p:column>
 
 								<p:column headerText="Descricao">
-									<p:inputText id="descricao" value="#{item.descricao}" />
+									<h:outputText id="descricao" value="#{item.descricao}" />
 								</p:column>
 
 								<p:column headerText="Valor">
-									<p:inputText id="valor" value="#{item.valor}" />
+									<h:outputText id="valor" value="#{item.valor}"
+										style="float: right">
+										<f:convertNumber pattern="###,##0.00" currencySymbol="R$"
+											type="currency" />
+									</h:outputText>
 								</p:column>
 
 							</p:dataTable>
